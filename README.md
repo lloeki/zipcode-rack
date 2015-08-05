@@ -2,6 +2,8 @@
 
 Rack API to find city data by zip code and name.
 
+[![Build Status](https://travis-ci.org/lloeki/zipcode-rack.svg?branch=master)](https://travis-ci.org/lloeki/zipcode-rack)
+
 ## Usage
 
 Mount as a rack app, either in Rails's routes or in `config.ru`. Require data
