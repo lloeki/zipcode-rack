@@ -1,4 +1,5 @@
 require 'grape'
+require 'json_enum'
 
 module ZipCode
   class API < Grape::API
