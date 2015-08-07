@@ -30,10 +30,11 @@ module ZipCode
       optional :name, type: String
       optional :zip, type: String
       optional :country, type: Symbol, regexp: /^[a-z]{2}$/
+      optional :limit, type: Integer, default: 20
       exactly_one_of :name, :zip
     end
     get '/search' do
-      db.for(country).search(*criteria)
+      db.for(country).search(*criteria).take(params[:limit])
     end
   end
 end

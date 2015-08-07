@@ -3,5 +3,7 @@ rvm:
     - '2.1'
     - '2.2'
     - 'rbx-2.5'
+before_install:
+  - npm install eslint
 script:
   - bundle exec rake ci

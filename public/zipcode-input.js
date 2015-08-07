@@ -1,0 +1,1 @@
+../app/assets/javascript/zipcode-input.js

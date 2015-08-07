@@ -11,5 +11,10 @@ Rake::TestTask.new do |t|
   t.verbose = true
 end
 
+task :eslint do
+  ok = system('eslint app/assets/javascript')
+  abort('eslint failed!') unless ok
+end
+
 task default: :ci
-task ci: [:test, :rubocop]
+task ci: [:test, :rubocop, :eslint]

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8' />
+        <script async src='zipcode-input.js' async onload='zipcode_setup();'></script>
+        <script>
+            function zipcode_setup() {
+                ZipCode.endpoint('http://127.0.0.1:9292/api/v1/search');
+                ZipCode.dropdownClass('dropdown');
+
+                // insert programmatically into DOM
+                var n = document.createElement('input');
+                n.setAttribute('type', 'zip-city');
+                document.body.appendChild(n);
+            }
+        </script>
+        <style>
+            .dropdown {
+                box-sizing: border-box;
+                border: 1px solid rgb(238, 238, 238);
+                background-color: white;
+            }
+            .dropdown ul, .dropdown li {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+            }
+            .dropdown li:hover {
+                cursor: pointer;
+            }
+            .dropdown li, .dropdown span {
+                padding: 3px;
+            }
+            .dropdown span {
+                font-style: italic;
+            }
+            .dropdown .selected {
+                background-color: rgb(238, 238, 238);
+            }
+        </style>
+    </head>
+    <body>
+        <input type='zip-city'></input>
+    </body>
+</html>

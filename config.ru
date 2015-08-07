@@ -3,4 +3,9 @@ require 'zipcode-rack'
 require 'zipcode-fr'
 ZipCode::DB.for(:fr).load
 
-run ZipCode::API
+load './public_app.rb'
+
+run Rack::URLMap.new(
+  '/' => ZipCode::API,
+  '/public' => Sinatra::Application,
+)

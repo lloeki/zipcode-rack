@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   EOS
   s.authors     = ['Loic Nageleisen']
   s.email       = 'loic.nageleisen@gmail.com'
-  s.files       = Dir['lib/**/*.rb']
+  s.files       = Dir['lib/**/*.rb'] + Dir['app/**/*']
   s.homepage    = 'https://github.com/lloeki/zipcode-rack'
 
   s.add_dependency 'grape'
