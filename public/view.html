@@ -12,6 +12,11 @@
                 var n = document.createElement('input');
                 n.setAttribute('type', 'zip-city');
                 document.body.appendChild(n);
+
+                var n = document.createElement('input');
+                n.setAttribute('type', 'text');
+                n.classList.add('zip-city');
+                document.body.appendChild(n);
             }
         </script>
         <style>
@@ -41,5 +46,6 @@
     </head>
     <body>
         <input type='zip-city'></input>
+        <input type='text' class='zip-city'></input>
     </body>
 </html>

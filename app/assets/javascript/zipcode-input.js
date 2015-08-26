@@ -312,7 +312,7 @@
     }
 
     function polyfillDocument() {
-        var elements = document.querySelectorAll('input[type=zip-city]');
+        var elements = document.querySelectorAll('input[type=zip-city], input[type=text].zip-city');
         for (var i = 0; i < elements.length; i++) {
             polyfill(elements[i]);
         }
@@ -323,7 +323,7 @@
             mutations.forEach(function (mutation) {
                 for (var i = 0; i < mutation.addedNodes.length; i++) {
                     var node = mutation.addedNodes[i];
-                    if (node.nodeName === 'INPUT' && node.getAttribute('type') === 'zip-city') {
+                    if (node.nodeName === 'INPUT' && (node.getAttribute('type') === 'zip-city' || (node.getAttribute('type') === 'text' && node.classList.contains('zip-city')))) {
                         polyfill(node);
                     }
                 }
