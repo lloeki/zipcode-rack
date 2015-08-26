@@ -117,7 +117,7 @@
     }
 
     function assignDropdown(input, dropdown) {
-        document.querySelector('body').appendChild(dropdown);
+        input.parentNode.insertBefore(dropdown, input.nextSibling);
         input.dropdown = dropdown;
         input.addEventListener('blur', function() {
             if (!isHovered(input.dropdown)) { removeDropdown(input); }
