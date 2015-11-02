@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'zipcode-rack'
-  s.version     = '1.2.0'
+  s.version     = '1.2.1'
   s.licenses    = ['MIT']
   s.summary     = 'Rack API to query postal codes'
   s.description = <<-EOS
