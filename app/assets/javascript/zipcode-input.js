@@ -311,6 +311,12 @@
         }
     }
 
+    function polyfillMaybe(node) {
+        if (node.nodeName === 'INPUT' && (node.getAttribute('type') === 'zip-city' || (node.getAttribute('type') === 'text' && node.classList.contains('zip-city')))) {
+            polyfill(node);
+        }
+    }
+
     function polyfillDocument() {
         var elements = document.querySelectorAll('input[type=zip-city], input[type=text].zip-city');
         for (var i = 0; i < elements.length; i++) {
@@ -318,14 +324,21 @@
         }
     }
 
+    function polyfillInsertedNodesFallback() {
+        document.addEventListener('DOMNodeInserted', function(e) {
+            polyfillMaybe(e.target);
+        });
+    }
+
     function polyfillInsertedNodes() {
+        if (typeof MutationObserver === 'undefined') {
+            return polyfillInsertedNodesFallback();
+        }
+
         var observer = new MutationObserver(function (mutations) {
             mutations.forEach(function (mutation) {
                 for (var i = 0; i < mutation.addedNodes.length; i++) {
-                    var node = mutation.addedNodes[i];
-                    if (node.nodeName === 'INPUT' && (node.getAttribute('type') === 'zip-city' || (node.getAttribute('type') === 'text' && node.classList.contains('zip-city')))) {
-                        polyfill(node);
-                    }
+                    polyfillMaybe(mutation.addedNodes[i]);
                 }
             });
         });
@@ -353,5 +366,12 @@
         setTimeout(handleLoaded, 1);
     } else {
         document.addEventListener('DOMContentLoaded', handleLoaded);
+    }
+
+    // polyfill IE
+    if (!('remove' in Element.prototype)) {
+        Element.prototype.remove = function() {
+            this.parentNode.removeChild(this);
+        };
     }
 }).call(this);
